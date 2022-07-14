@@ -1,0 +1,73 @@
+ASC:
+  CUDA_VISIBLE_DEVICES: 0
+  device: cuda:0
+  train_log_dir: ./train_log
+  laptop:
+    max_sentence_len: 80
+    max_target_len: 10
+    vocab_embedding_dim: 300
+
+    vocab_embedding_file_path: ./data/laptop/laptop_2014_840b_300.txt
+    vocab_embedding_value_path:  ./data/laptop/laptop_embedding_value.npy
+    original_train_file_path: ./data/laptop/new_train.txt
+    original_test_file_path: ./data/laptop/new_test.txt
+    train_data_path: ./data/laptop/train.npz
+    test_data_path: ./data/laptop/test.npz
+    word_dict_path: ./data/laptop/word_dict.npy
+  restaurant:
+    max_sentence_len: 80
+    max_target_len: 10
+    vocab_embedding_dim: 300
+
+    vocab_embedding_file_path: ./data/restaurant/restaurant_2014_840b_300.txt
+    vocab_embedding_value_path: ./data/restaurant/restaurant_embedding_value.npy
+    original_train_file_path: ./data/restaurant/new_train.txt
+    original_test_file_path: ./data/restaurant/new_test.txt
+    train_data_path: ./data/restaurant/train.npz
+    test_data_path: ./data/restaurant/test.npz
+    word_dict_path: ./data/restaurant/word_dict.npy
+
+  checkpoint_model_dir: ./checkpoint_model/
+
+  net_parameter:
+    position_embedding_dim: 100
+    pos_embedding_dim: 100
+    MIN_VALUE: -1000000000
+    dropout: 0.5
+    bilstm_num_layers: 3
+    bilstm_embed_size: 300
+    bidirectional: True
+    optimizer: adam
+    batch_size: 32
+    test_batch_size: 512
+    learning_rate: 0.0003
+    weight_decay: 0
+    num_epoches: 100
+
+
+DSC:
+  device: cuda:0
+  max_sentence_len: 80
+  original_sentiment_label_train_path: ./data/yelp/sentiment_label_train.txt
+  vocab_embedding_file_path: ./data/yelp/yelp_2014_840b_300.txt
+  vocab_embedding_value_path:  ./data/yelp/yelp_embedding_value.npy
+  new_sentence_label_file_path: ./data/yelp/new_sentence_label.txt
+  train_data_path: ./data/yelp/train.npz
+  word_dict_path: ./data/yelp/word_dict.npy
+  vocab_embedding_dim: 300
+  checkpoint_model_dir: ./checkpoint_model/
+
+  net_parameter:
+    MIN_VALUE: -1000000000
+    dropout: 0.5
+    bilstm_num_layers: 2
+    bilstm_embed_size: 300
+    bidirectional: True
+    optimizer: adam
+    batch_size: 1024
+    learning_rate: 0.0001
+    weight_decay: 0
+    num_epoches: 10000
+
+
+
